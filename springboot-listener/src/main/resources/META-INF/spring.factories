@@ -1,0 +1,3 @@
+#org.springframework.boot.SpringApplicationRunListener=com.westworld.springbootlistener.listener.MySpringApplicationRunListener
+#
+#org.springframework.context.ApplicationContextInitializer=com.westworld.springbootlistener.listener.MyApplicationContextInitializer
