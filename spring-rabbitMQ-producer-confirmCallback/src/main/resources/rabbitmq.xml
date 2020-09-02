@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
+
+    <!--加载配置文件-->
+    <context:property-placeholder location="classpath:rabbitmqConfig.properties"></context:property-placeholder>
+
+    <!--创建connectionFactory-->
+    <rabbit:connection-factory id="connectionFactory" host="${rabbitmq.host}"
+                               port="${rabbitmq.port}"
+                               username="${rabbitmq.username}"
+                               password="${rabbitmq.password}"
+                               virtual-host="${rabbitmq.virtual-host}"
+                               publisher-confirms="true"
+                               publisher-returns="true" ></rabbit:connection-factory>
+
+    <!--定义管理交换机、队列-->
+    <rabbit:admin connection-factory="connectionFactory"></rabbit:admin>
+
+    <!--创建queue队列-->
+    <rabbit:queue id="topicQueue" name="topic_queue" auto-declare="true"></rabbit:queue>
+
+    <!--创建exchange交换机-->
+    <rabbit:topic-exchange id="topicExchange" name="topic_exchange" auto-declare="true">
+        <!--绑定队列-->
+        <rabbit:bindings>
+            <rabbit:binding pattern="bb.*" queue="topicQueue"></rabbit:binding>
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
+
+    <!--定义rabbitTemplate对象，可以在代码中方便的发送消息-->
+    <rabbit:template id="rabbitTemplate" connection-factory="connectionFactory"></rabbit:template>
+
+</beans>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
+
+    <!--加载配置文件-->
+    <context:property-placeholder location="classpath:rabbitmq.properties"></context:property-placeholder>
+
+    <!--定义rabbitmq connectionFactory-->
+    <rabbit:connection-factory id="connectionFactory" host="${rabbitmq.host}"
+                               port="${rabbitmq.port}"
+                               username="${rabbitmq.username}"
+                               password="${rabbitmq.password}"
+                               virtual-host="${rabbitmq.virtual-host}"></rabbit:connection-factory>
+
+    <!--定义管理交换机、队列-->
+    <rabbit:admin connection-factory="connectionFactory"></rabbit:admin>
+
+    <!--监听的回调bean-->
+    <bean id="QueueListener" class="listener.RabbitMqListener" ></bean>
+    <bean id="Fanout-QueueListener" class="listener.FanoutListener"></bean>    <!--监听广播模式的队列-->
+    <bean id="Topic-QueueListener" class="listener.TopicListener"></bean>   <!--监听通配符模式的队列-->
+
+    <!--rabbitMQ的监听-->
+    <rabbit:listener-container connection-factory="connectionFactory" auto-declare="true">
+        <rabbit:listener ref="QueueListener" queue-names="spring_queue"></rabbit:listener>
+        <rabbit:listener ref="Fanout-QueueListener" queue-names="spring_fanout_queue1"></rabbit:listener>
+        <rabbit:listener ref="Fanout-QueueListener" queue-names="spring_fanout_queue2"></rabbit:listener>
+        <rabbit:listener ref="Topic-QueueListener" queue-names="spring_topic_queue1"></rabbit:listener>
+        <rabbit:listener ref="Topic-QueueListener" queue-names="spring_topic_queue2"></rabbit:listener>
+
+    </rabbit:listener-container>
+</beans>

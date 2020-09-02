@@ -6,16 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="rabbitMq-consumer" />
-        <module name="rabbitMq-producer" />
-        <module name="spring-rabbirMQ-consumer" />
-        <module name="spring-rabbitMQ-producer" />
-        <module name="springBoot-rabbitMQ-consumer" />
-        <module name="springBoot-rabbitMQ-producer" />
+        <module name="spring-rabbitMQ-producer-confirmCallback" />
+        <module name="springrabbitMQconsumerack" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="spring-rabbitMQ-producer-Callback" target="1.8" />
+      <module name="spring-rabbitMQ-producer-confirmCallback" target="1.8" />
+      <module name="springrabbitMQconsumerack" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
