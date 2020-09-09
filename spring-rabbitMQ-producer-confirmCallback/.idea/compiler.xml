@@ -6,12 +6,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="spring-rabbitMQ-consumer-ack" />
+        <module name="spring-rabbitMQ-consumer-Delay" />
+        <module name="spring-rabbitMQ-consumer-DLX" />
         <module name="spring-rabbitMQ-producer-confirmCallback" />
-        <module name="springrabbitMQconsumerack" />
+        <module name="spring-rabbitMQ-producer-Delay" />
+        <module name="spring-rabbitMQ-producer-DLX" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="spring-rabbitMQ-consumer-ack" target="1.8" />
+      <module name="spring-rabbitMQ-consumer-Delay" target="1.8" />
+      <module name="spring-rabbitMQ-consumer-DLX" target="1.8" />
       <module name="spring-rabbitMQ-producer-confirmCallback" target="1.8" />
+      <module name="spring-rabbitMQ-producer-Delay" target="1.8" />
+      <module name="spring-rabbitMQ-producer-DLX" target="1.8" />
       <module name="springrabbitMQconsumerack" target="1.8" />
     </bytecodeTargetLevel>
   </component>

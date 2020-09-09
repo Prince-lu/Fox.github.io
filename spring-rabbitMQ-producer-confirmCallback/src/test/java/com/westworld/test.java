@@ -20,7 +20,7 @@ public class test {
     private RabbitTemplate rabbitTemplate;
 
     /**
-     * 消息可靠性投递  confirms确认模式-----生产者发送消息后，消息如果被路由到了exchange交换机，则会调用confirmback回调函数
+     * 消息可靠性投递  confirms确认模式-----生产者发送消息后，消息如果被送到了exchange交换机，则会调用confirmback回调函数
      * 确认模式：
      *   步骤：
      *      1.确认模式开启：ConnectionFactory中开启publisher-confirms="true"
@@ -82,7 +82,10 @@ public class test {
             });
 
             //发送消息
-        rabbitTemplate.convertAndSend("topic_exchange","bb.luqifan","消息可投靠性的消息投递.....");
+        for (int i = 0; i <10 ; i++) {
+
+            rabbitTemplate.convertAndSend("topic_exchange","bb.luqifan","消息可投靠性的消息投递.....");
+        }
     }
 
 

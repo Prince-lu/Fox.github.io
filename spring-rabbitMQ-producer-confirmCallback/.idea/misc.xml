@@ -4,7 +4,11 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/../springrabbitMQconsumerack/pom.xml" />
+        <option value="$PROJECT_DIR$/../spring-rabbitMQ-consumer-ack/pom.xml" />
+        <option value="$PROJECT_DIR$/../spring-rabbitMQ-producer-DLX/pom.xml" />
+        <option value="$PROJECT_DIR$/../spring-rabbitMQ-consumer-DLX/pom.xml" />
+        <option value="$PROJECT_DIR$/../spring-rabbitMQ-producer-Delay/pom.xml" />
+        <option value="$PROJECT_DIR$/../spring-rabbitMQ-consumer-Delay/pom.xml" />
       </list>
     </option>
   </component>

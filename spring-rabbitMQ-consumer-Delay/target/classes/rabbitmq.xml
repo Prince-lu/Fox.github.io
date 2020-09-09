@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
+
+<!--加载配置文件-->
+    <context:property-placeholder location="classpath:rabbitmq.properties"></context:property-placeholder>
+    <!--包扫描需要监听的bean-->
+    <context:component-scan base-package="com.westworld.listener"></context:component-scan>
+    <!--创建rabbitmq connrctionFactory-->
+    <rabbit:connection-factory id="connectionFactory" host="${rabbitmq.host}"
+                               port="${rabbitmq.port}"
+                               username="${rabbitmq.username}"
+                               password="${rabbitmq.password}"
+                               virtual-host="${rabbitmq.virtual-host}"></rabbit:connection-factory>
+    <!--创建connection连接-->
+    <rabbit:admin connection-factory="connectionFactory"></rabbit:admin>
+
+    <!--rabbitMQ的监听-->
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="manual">
+        <!--指定监听的queue队列-->
+        <rabbit:listener ref="delayListener" queue-names="order_queue_DLX"></rabbit:listener>
+    </rabbit:listener-container>
+
+</beans>

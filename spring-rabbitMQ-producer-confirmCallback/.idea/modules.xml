@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../spring-rabbitMQ-consumer-DLX/spring-rabbitMQ-consumer-DLX.iml" filepath="$PROJECT_DIR$/../spring-rabbitMQ-consumer-DLX/spring-rabbitMQ-consumer-DLX.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../spring-rabbitMQ-consumer-Delay/spring-rabbitMQ-consumer-Delay.iml" filepath="$PROJECT_DIR$/../spring-rabbitMQ-consumer-Delay/spring-rabbitMQ-consumer-Delay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../spring-rabbitMQ-consumer-ack/spring-rabbitMQ-consumer-ack.iml" filepath="$PROJECT_DIR$/../spring-rabbitMQ-consumer-ack/spring-rabbitMQ-consumer-ack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../spring-rabbitMQ-producer-DLX/spring-rabbitMQ-producer-DLX.iml" filepath="$PROJECT_DIR$/../spring-rabbitMQ-producer-DLX/spring-rabbitMQ-producer-DLX.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../spring-rabbitMQ-producer-Delay/spring-rabbitMQ-producer-Delay.iml" filepath="$PROJECT_DIR$/../spring-rabbitMQ-producer-Delay/spring-rabbitMQ-producer-Delay.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-rabbitMQ-producer-confirmCallback.iml" filepath="$PROJECT_DIR$/spring-rabbitMQ-producer-confirmCallback.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../springrabbitMQconsumerack/springrabbitMQconsumerack.iml" filepath="$PROJECT_DIR$/../springrabbitMQconsumerack/springrabbitMQconsumerack.iml" />
     </modules>
   </component>
 </project>
